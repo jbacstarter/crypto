@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="tablecontainer">
+        <table class="table">
+            <thead class="thead">
+                <th>Currency</th>
+                <th>Price Change</th>
+                <th>Weighted Avg. Price</th>
+                <th>Prev Close Price</th>
+                <th>Last Price</th>
+                <th>Last Qty.</th>
+                <th>Bid Price</th>
+                <th>Bid Qty.</th>
+                <th>Ask Price</th>
+            </thead>
+            <tbody class="tbody">
+          <!-- Generated trows and tdata -->
+            </tbody>
+                
+        </table>
+    </div>
+
+
+    <script> 
+    function getData(method, resource) {
+        const request = new XMLHttpRequest
+
+        request.onload = () => {
+            if (request.status === 200) {
+                const data = JSON.parse(request.responseText)
+                editData(data)
+            }
+        }
+        request.open(method, resource)
+        request.send()
+    }
+
+    getData("GET", "https://api2.binance.com/api/v3/ticker/24hr") 
+    
+    const editData = (data) => {
+        if (data) {
+            for(let i = 0; i < 100; i++ ) {
+                const tablebody = document.querySelector(".tbody")
+                const tablehead = document.querySelector('.thead')
+                const tablerow = document.createElement("tr")
+                tablerow.setAttribute("class", "tr")
+                tablerow.innerHTML = 
+                `
+                <td>${data[i].symbol}</td>
+                <td>${data[i].priceChange}</td>
+                <td>${data[i].priceChangePercent}</td>
+                <td>${data[i].weightedAvgPrice}</td>
+                <td>${data[i].prevClosePrice}</td>
+                <td>${data[i].lastQty}</td>
+                <td>${data[i].bidPrice}</td>
+                <td>${data[i].bidQty}</td>
+                <td>${data[i].askPrice}</td>
+                
+                `;
+                tablebody.appendChild(tablerow)
+                if (!tablerow.innerHTML) {
+                const theads = document.querySelector("th")
+                    tablehead.removeChild(theads)
+                    console.log(`Resource Not Found`)
+                
+                }
+            }
+        }
+    }
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+* {
+    padding: 0 ;
+    margin: 0 ;
+    box-sizing: border-box;
+}
+body {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.884);
+}
+.tablecontainer {
+    width: 90%;
+    overflow: hidden;
+    padding: 50px;
+    height: auto;
+    position: absolute;
+    top: 5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    border-radius: 10px;
+    background: rgba(58, 80, 107, 0.87);
+}
+
+.table {
+    border-collapse: collapse;
+    position: relative;
+    right: 1.2rem;
+}
+.thead{
+    border-radius: 30px;
+}
+.thead th{
+    padding: 5px;
+    border: 2px solid black;
+    color: white;
+    border-left: none;
+    border-right: none;
+}
+
+.tr td {
+    border: 1px solid black;
+    text-align: center;
+    word-wrap: break-word;
+    padding: 5px;
+    border: 1px solid gray;
+    color:  white;
+    font-weight: lighter;
+    padding: 20px 10px;
+    border-left: none;    
+    border-right: none;    
+}
+.tr:hover{
+    background: gray;
+    transition: 0.7s;
+}
+td:hover {
+    color: gold;
+    transition: 1s;
+}
+@media only screen and (max-width: 390px) {
+.tablecontainer {
+    overflow: auto;
+}
+
+/* custom scrollbar */
+/* width */
+.tablecontainer::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  .tablecontainer::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  .tablecontainer::-webkit-scrollbar-thumb {
+    background: lightseagreen; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  .tablecontainer::-webkit-scrollbar-thumb:hover {
+    background: lightgray; 
+  }
+}
